@@ -54,7 +54,22 @@ def pets_by_breed(pet_shop_object, breed_name)
 end
 
 def find_pet_by_name(pet_shop_object, pet_name)
-  # minimal test compliance
-  return { name: pet_name} if pet_name == "Arthur"
-  return nil
+  # search through pet_shop for required pet, break out
+  # of function on first match, else return nil
+  # requires { pets: => [{name: => string}, {...}]}
+  for x in pet_shop_object[:pets]
+    return x if ( x[:name] == pet_name )
+  end
+  return
 end
+
+def remove_pet_by_name(pet_shop_object, pet_to_remove) 
+  for x in pet_shop_object[:pets]
+    if x[:name] == pet_to_remove
+      pet_shop_object[:pets].delete(x)
+      return 
+    end
+  end
+  return
+end
+
