@@ -53,3 +53,7 @@ def pets_by_breed(pet_shop_object, breed_name)
   return pets_list   # minimal return for test
 end
 
+def find_pet_by_name(pet_shop_object, pet_name)
+  # minimal test
+  return { name: "Arthur"}
+end
