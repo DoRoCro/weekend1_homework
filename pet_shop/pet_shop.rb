@@ -33,7 +33,7 @@ end
 def stock_count(pet_shop_object)
   # assumes each element of pet_shop_object represents 1 pet
   stock_count = 0
-  for x in pet_shop_object[:pets]
+  for pet in pet_shop_object[:pets]
     stock_count += 1
   end
   return stock_count
@@ -42,8 +42,8 @@ end
 def pets_by_breed(pet_shop_object, breed_name)
   # assumes pet_shop_object{ :pets => { :breed => string}}
   pets_list = []
-  for x in pet_shop_object[:pets]
-     pets_list.push(x)  if (x[:breed] == breed_name) 
+  for pet in pet_shop_object[:pets]
+     pets_list.push(pet)  if (pet[:breed] == breed_name) 
   end
   return pets_list
 end
@@ -52,8 +52,8 @@ def find_pet_by_name(pet_shop_object, pet_name)
   # search through pet_shop for required pet, break out
   # of function on first match, else return nil
   # requires { pets: => [{name: => string}, {...}]}
-  for x in pet_shop_object[:pets]
-    return x if ( x[:name] == pet_name )
+  for pet in pet_shop_object[:pets]
+    return pet if ( pet[:name] == pet_name )
   end
   return
 end
@@ -66,10 +66,12 @@ def remove_pet_by_name(pet_shop_object, pet_to_remove)
 end
 
 def add_pet_to_stock(pet_shop_object, new_pet)
+  # assumes pet_shop_object{ :pets => [{ :breed => string}]}
   return pet_shop_object[:pets].push(new_pet)
 end
 
 def customer_pet_count(customer)
+  # count elements in customer[:pets] array
   return customer[:pets].length
 end
 
