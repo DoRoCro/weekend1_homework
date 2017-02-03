@@ -6,14 +6,20 @@ end
 
 def total_cash(pet_shop_object)
   # assumes structure in object passed in matches 
-  # pet_shop_object{ :admin => { total_cash: => integer}}
+  # pet_shop_object{ :admin => { :total_cash => integer}}
   return pet_shop_object[:admin][:total_cash]
 end
 
 def add_or_remove_cash(pet_shop_object,cash)
   # assumes structure in object passed in matches 
-  # pet_shop_object{ :admin => { total_cash: => integer}}
+  # pet_shop_object{ :admin => { :total_cash => integer}}
   pet_shop_object[:admin][:total_cash] += cash
   return pet_shop_object[:admin][:total_cash]
+end
+
+def pets_sold(pet_shop_object)
+  # assumes structure in object passed in matches 
+  # pet_shop_object{ :admin => { :pets_sold => integer}}
+  return 0   #trying pedantic TDD...
 end
 
