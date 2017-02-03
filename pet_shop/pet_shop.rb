@@ -31,5 +31,25 @@ def increase_pets_sold(pet_shop_object, num_pets)
 end
 
 def stock_count(pet_shop_object)
-  return 6
+  # assumes each element of pet_shop_object represents 1 pet
+  stock_count = 0
+  for x in pet_shop_object[:pets]
+    stock_count += 1
+  end
+  return stock_count
 end
+
+def pets_by_breed(pet_shop_object, breed_name)
+  # assumes pet_shop_object{ :pets => { :breed => string}}
+  #  
+  pets_list = []
+  for x in pet_shop_object[:pets]
+    if x[:breed] == breed_name
+      pets_list = pets_list << x
+    else
+      # do nothing
+    end
+  end
+  return pets_list   # minimal return for test
+end
+
