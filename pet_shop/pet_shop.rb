@@ -41,16 +41,11 @@ end
 
 def pets_by_breed(pet_shop_object, breed_name)
   # assumes pet_shop_object{ :pets => { :breed => string}}
-  #  
   pets_list = []
   for x in pet_shop_object[:pets]
-    if x[:breed] == breed_name
-      pets_list = pets_list << x
-    else
-      # do nothing
-    end
+     pets_list.push(x)  if (x[:breed] == breed_name) 
   end
-  return pets_list   # minimal return for test
+  return pets_list
 end
 
 def find_pet_by_name(pet_shop_object, pet_name)
