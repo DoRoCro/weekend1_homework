@@ -20,6 +20,10 @@ end
 def pets_sold(pet_shop_object)
   # assumes structure in object passed in matches 
   # pet_shop_object{ :admin => { :pets_sold => integer}}
-  return 0   #trying pedantic TDD...
+  return pet_shop_object[:admin][:pets_sold]
 end
 
+def increase_pets_sold(pet_shop_object, num_pets)
+  pet_shop_object[:admin][:pets_sold] += num_pets
+  return pet_shop_object[:admin][:pets_sold]
+end
