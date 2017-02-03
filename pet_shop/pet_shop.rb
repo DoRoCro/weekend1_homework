@@ -59,13 +59,10 @@ def find_pet_by_name(pet_shop_object, pet_name)
 end
 
 def remove_pet_by_name(pet_shop_object, pet_to_remove) 
-  for x in pet_shop_object[:pets]
-    if x[:name] == pet_to_remove
-      pet_shop_object[:pets].delete(x)
-      return 
-    end
-  end
-  return
+  # DRY - use find instead of enumerating :pets array
+  return pet_shop_object[:pets].delete( 
+    find_pet_by_name(pet_shop_object, pet_to_remove)
+    )
 end
 
 def add_pet_to_stock(pet_shop_object, new_pet)
