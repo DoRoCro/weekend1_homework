@@ -1,31 +1,41 @@
+# assumed object structure
+#   pet_shop_object = {
+#     :pets => [ {pet}, {pet} ...],
+#     :admin => { {} {} ...},
+#     :name => string
+#     ...
+#   }
+#   pet = {
+#     :name => string
+#     :pet_type => :symbol
+#     :breed => string
+#     :price => integer
+#     ...
+#   }
+#   customer = {
+#     :name => string
+#     :pets => [ string, string, ... ]
+#     :case => integer
+#   }
+
 def pet_shop_name(pet_shop_object)
-  # assumes structure in object passed in matches 
-  # pet_shop_object{ :name => string}
   return pet_shop_object[:name]
 end
 
 def total_cash(pet_shop_object)
-  # assumes structure in object passed in matches 
-  # pet_shop_object{ :admin => { :total_cash => integer}}
   return pet_shop_object[:admin][:total_cash]
 end
 
 def add_or_remove_cash(pet_shop_object,cash)
-  # assumes structure in object passed in matches 
-  # pet_shop_object{ :admin => { :total_cash => integer}}
   pet_shop_object[:admin][:total_cash] += cash
   return pet_shop_object[:admin][:total_cash]
 end
 
 def pets_sold(pet_shop_object)
-  # assumes structure in object passed in matches 
-  # pet_shop_object{ :admin => { :pets_sold => integer}}
   return pet_shop_object[:admin][:pets_sold]
 end
 
 def increase_pets_sold(pet_shop_object, num_pets)
-  # assumes structure in object passed in matches 
-  # pet_shop_object{ :admin => { :pets_sold => integer}}
   pet_shop_object[:admin][:pets_sold] += num_pets
   return pet_shop_object[:admin][:pets_sold]
 end
@@ -40,7 +50,6 @@ def stock_count(pet_shop_object)
 end
 
 def pets_by_breed(pet_shop_object, breed_name)
-  # assumes pet_shop_object{ :pets => { :breed => string}}
   pets_list = []
   for pet in pet_shop_object[:pets]
      pets_list.push(pet)  if (pet[:breed] == breed_name) 
@@ -51,7 +60,6 @@ end
 def find_pet_by_name(pet_shop_object, pet_name)
   # search through pet_shop for required pet, break out
   # of function on first match, else return nil
-  # requires { pets: => [{name: => string}, {...}]}
   for pet in pet_shop_object[:pets]
     return pet if ( pet[:name] == pet_name )
   end
@@ -66,7 +74,6 @@ def remove_pet_by_name(pet_shop_object, pet_to_remove)
 end
 
 def add_pet_to_stock(pet_shop_object, new_pet)
-  # assumes pet_shop_object{ :pets => [{ :breed => string}]}
   return pet_shop_object[:pets].push(new_pet)
 end
 
