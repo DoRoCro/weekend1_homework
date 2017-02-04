@@ -41,7 +41,7 @@ def increase_pets_sold(pet_shop_object, num_pets)
 end
 
 def stock_count(pet_shop_object)
-  # assumes each element of pet_shop_object represents 1 pet
+  # assumes each element of pet_shop_object[:pets] represents 1 pet
   stock_count = 0
   for pet in pet_shop_object[:pets]
     stock_count += 1
@@ -84,4 +84,8 @@ end
 
 def add_pet_to_customer(customer, new_pet)
   customer[:pets] << new_pet
+end
+
+def customer_can_afford_pet(customer,pet)
+  return false
 end
