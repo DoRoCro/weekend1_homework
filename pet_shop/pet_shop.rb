@@ -91,7 +91,11 @@ def customer_can_afford_pet(customer,pet)
 end
 
 def sell_pet_to_customer(pet_shop_object, pet, customer)
-  customer[:pets].push(pet)
-  pet_shop_object[:admin][:pets_sold] += 1
-  pet_shop_object[:admin][:total_cash] += pet[:price] 
+  if pet != nil
+    customer[:pets].push(pet)
+    pet_shop_object[:admin][:pets_sold] += 1
+    pet_shop_object[:admin][:total_cash] += pet[:price] 
+  else
+    # do nothing
+  end
 end
